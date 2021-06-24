@@ -3,7 +3,7 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3100;
 const path = require('path');
-const publicPath = path.join(__dirname, 'client/public');
+const publicPath = path.join(__dirname, 'client/build');
 
 app.use(cors());
 app.use(express.json());
@@ -13,7 +13,6 @@ const todoRoute = require('./routes/todolist');
 app.use('/todolist', todoRoute);
 
 app.get('*', (req, res) => {
-  console.log(req);
   res.sendFile(path.join(publicPath, 'index.html'));
 });
 
