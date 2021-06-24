@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import colors from '../../../styles/colors';
 import { CheckCircleFilled, MinusCircleFilled, InfoCircleFilled } from '@ant-design/icons';
 
+const transform = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 const Field = styled.div`
   position: relative;
   display: flex;
@@ -14,6 +22,7 @@ const Field = styled.div`
   border: 0.3px solid #e0e0e0;
   border-radius: 15px;
   justify-content: space-between;
+  animation: ${transform} 0.4s forwards;
 `;
 const Description = styled.div`
   font-size: 1.5rem;
@@ -25,6 +34,7 @@ const Description = styled.div`
     color: ${colors.mediumGray};
   }
 `;
+
 const DoneIcon = styled(CheckCircleFilled)`
   color: ${colors.green};
   font-size: 1.5rem;

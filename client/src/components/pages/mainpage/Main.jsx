@@ -1,10 +1,11 @@
 import React, { useLayoutEffect, useState } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import colors from '../../../styles/colors';
 import Task from './task';
 import * as service from '../../../utility/apiUtil';
 import ReactLoading from 'react-loading';
 import Header from './header';
+import TodoListImg from '../../../drawable/43029.jpg'; // Tell webpack this JS file uses this image
 
 const Wrapper = styled.div`
   margin: 4rem;
@@ -35,6 +36,24 @@ const AddTaskInput = styled.input`
 const Loading = styled(ReactLoading)`
   margin: auto;
 `;
+const transform = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+const TodoImg = styled.div`
+  display: inline-block;
+  width: 100%;
+  bottom: 15%;
+  text-align: center;
+  animation: ${transform} 2s linear;
+  > img {
+    max-width: 45%;
+  }
+`;
 
 const Main = () => {
   const [addNew, setAddNew] = useState(false);
@@ -50,7 +69,6 @@ const Main = () => {
       console.log(error);
     }
   };
-
   const updateTaskStatus = async id => {
     try {
       await service.updateTaskStatus(id);
@@ -106,6 +124,11 @@ const Main = () => {
       {tasks.map(t => (
         <Task key={t.id} task={t} deleteTask={deleteTask} updateTaskStatus={updateTaskStatus} />
       ))}
+      {tasks.length === 0 && (
+        <TodoImg>
+          <img src={TodoListImg} alt="TODOLIST" />
+        </TodoImg>
+      )}
     </>
   );
 };
