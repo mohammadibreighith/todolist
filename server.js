@@ -9,6 +9,7 @@ const todoRoute = require('./routes/todolist');
 app.use(cors());
 app.use(express.json());
 app.use('/todolist', todoRoute);
+app.set('trust proxy', true);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(publicPath));
