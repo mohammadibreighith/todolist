@@ -16,7 +16,7 @@ const proConfig = process.env.DATABASE_URL;
 // const pool = new Pool({
 //   connectionString: process.env.NODE_ENV === 'production' ? proConfig : devConfig,
 // });
-const client = new pg.Client(devConfig);
+const client = new pg.Client(process.env.NODE_ENV === 'production' ? proConfig : devConfig);
 client.connect();
 
 // console.log(pool);
