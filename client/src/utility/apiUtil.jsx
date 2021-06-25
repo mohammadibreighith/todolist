@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import Axios from 'axios';
 
-const Api = 'http://localhost:3100/todolist';
+const Api = '/todolist';
 
 export async function createTask(description) {
   try {

@@ -8,12 +8,15 @@ const todoRoute = require('./routes/todolist');
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static('./client/build'));
+
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(publicPath));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(publicPath, 'index.html'));
-  });
 }
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(publicPath, 'index.html'));
+});
 
 app.use('/todolist', todoRoute);
 

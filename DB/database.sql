@@ -1,4 +1,4 @@
-CREATE DATABASE tododb;
+-- CREATE DATABASE tododb;
 
 CREATE TABLE todolist(
     id SERIAL PRIMARY KEY,
