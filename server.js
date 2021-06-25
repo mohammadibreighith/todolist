@@ -8,7 +8,7 @@ const todoRoute = require('./routes/todolist');
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static('./client/build'));
+app.use('/todolist', todoRoute);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(publicPath));
@@ -17,7 +17,5 @@ if (process.env.NODE_ENV === 'production') {
 app.get('*', (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'));
 });
-
-app.use('/todolist', todoRoute);
 
 app.listen(PORT);
