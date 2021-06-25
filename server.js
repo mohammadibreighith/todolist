@@ -4,11 +4,11 @@ const app = express();
 const PORT = process.env.PORT || 3100;
 const path = require('path');
 const publicPath = path.join(__dirname, 'client/build');
+const todoRoute = require('./routes/todolist');
 
 app.use(cors());
 app.use(express.json());
 app.use(express.static(publicPath));
-const todoRoute = require('./routes/todolist');
 
 app.use('/todolist', todoRoute);
 
