@@ -1,4 +1,4 @@
-var pg = require('pg');
+const pg = require('pg');
 
 require('dotenv').config();
 const config = {
