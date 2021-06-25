@@ -7,7 +7,7 @@ const devConfig = {
   host: process.env.PG_HOST,
   database: process.env.PG_DATABASE,
   port: process.env.PG_PORT,
-  ssl: process.env.DATABASE_URL ? true : false,
+  ssl: false,
 };
 
 const client = new pg.Client(devConfig);
